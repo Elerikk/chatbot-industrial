@@ -1,201 +1,150 @@
+Análisis
+
+python
+Mostrar siempre los detalles
+
+Copiar
+# Generar un nuevo index.html con estilo de respuesta resaltado aplicado dinámicamente en cada respuesta del bot
+
+html_resaltado = """
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>ChatBot Ingeniería Civil Industrial</title>
+  <title>ChatBot con Respuestas Resaltadas</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      overflow: hidden;
       font-family: Arial, sans-serif;
       background-color: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
     }
+
+    h2 {
+      text-align: center;
+      padding: 10px;
+      margin: 0;
+    }
+
     #chatbox {
       background: #fff;
       border: 1px solid #ccc;
       border-radius: 10px;
-      padding: 14px;
-      max-width: 100%;
-      height: 400px;
-      overflow-y: auto;
-      white-space: pre-line;
-      margin: 14px;
-    }
-    .buttons-container {
+      padding: 10px;
       margin: 10px;
+      white-space: pre-line;
+      max-width: 95%;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .respuesta-bot {
+      background-color: #e9f3ff;
+      border-left: 4px solid #007bff;
+      padding: 8px 12px;
+      margin: 8px 0;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+
+    .fixed-bottom {
+      background: #f2f2f2;
+      padding: 10px;
+      border-top: 1px solid #ccc;
+    }
+
+    .buttons-container {
       display: flex;
       flex-wrap: wrap;
       gap: 5px;
+      justify-content: center;
+      margin-bottom: 10px;
     }
+
     .option-btn {
-      padding: 10px 20px;
-      margin: 5px;
-      font-size: 16px;
+      padding: 8px 14px;
+      font-size: 14px;
       border: none;
       border-radius: 5px;
-      cursor: pointer;
       background-color: #007bff;
       color: white;
+      cursor: pointer;
     }
+
     #manualInput {
-      margin-top: 10px;
+      display: flex;
+      gap: 5px;
+      justify-content: center;
     }
+
     #manualInput input {
-      padding: 10px;
-      font-size: 16px;
-      width: 300px;
+      padding: 8px;
+      font-size: 14px;
+      width: 60%;
     }
+
     #manualInput button {
-      padding: 10px;
-      font-size: 16px;
-      margin-left: 10px;
+      padding: 8px 14px;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
 
-<h2>Bienvenido al ChatBot de Ingeniería Civil Industrial 👷‍♂️</h2>
-<div id="chatbox">¿En qué te puedo ayudar?
-1. Información general de la carrera  
-2. Preguntas Frecuentes (FAQ)  
-3. Otros  
-4. Salir
-</div>
+  <h2>Bienvenido al ChatBot de Ingeniería Civil Industrial 👷‍♂️</h2>
 
-<div class="buttons-container" id="buttonsContainer"></div>
+  <div id="chatbox">
+<div class="respuesta-bot">🤖 ¿En qué te puedo ayudar?<br>
+1. Información general de la carrera<br>
+2. Preguntas Frecuentes (FAQ)<br>
+3. Otros<br>
+4. Salir</div>
+  </div>
 
-<div id="manualInput">
-  <input type="text" id="userInput" placeholder="Escribe el número de opción aquí...">
-  <button onclick="procesarEntrada(document.getElementById('userInput').value.trim()); document.getElementById('userInput').value = '';">Enviar</button>
-</div>
+  <div class="fixed-bottom">
+    <div class="buttons-container" id="buttonsContainer">
+      <button class="option-btn" onclick="responder('1')">1</button>
+      <button class="option-btn" onclick="responder('2')">2</button>
+      <button class="option-btn" onclick="responder('3')">3</button>
+      <button class="option-btn" onclick="responder('4')">4</button>
+    </div>
 
-<script>
-let estado = 'menu';
+    <div id="manualInput">
+      <input type="text" id="userInput" placeholder="Escribe el número de opción aquí...">
+      <button onclick="responderManual()">Enviar</button>
+    </div>
+  </div>
 
-const urlAdaptacion = "https://scanned.page/p/681e2c35aadee";
-const urlBuses = "https://uta.cl/buses";
+  <script>
+    function responder(opcion) {
+      const chatbox = document.getElementById("chatbox");
+      let respuesta = "";
 
-const menuPrincipal = "¿En qué te puedo ayudar?\n1. Información general de la carrera\n2. Preguntas Frecuentes (FAQ)\n3. Otros\n4. Salir";
-const submenuInfoGeneral = "📌 Submenú - Información General:\n1. Perfil de egreso\n2. Objetivos de la carrera\n3. Áreas de formación\n0. Volver";
-const submenuFAQ = "❓ Submenú - Preguntas Frecuentes:\n1. Licencias Médicas\n2. Trabajo al egresar\n3. Traslado\n4. Postulaciones\n5. Inscripciones\n6. Becas\n7. Biblioteca\n0. Volver";
-const submenuOtros = "🔧 Submenú - Otros:\n1. Buses de acercamiento\n2. Denuncias y Acoso\n3. Servicio Médico Estudiantil\n4. Adaptación Regular Académica\n5. Reincorporación a la carrera\n0. Volver al menú principal";
-
-const botones = {
-  'menu': ['1', '2', '3', '4'],
-  'info_general': ['1', '2', '3', '0'],
-  'faq': ['1', '2', '3', '4', '5', '6', '7', '0'],
-  'otros': ['1', '2', '3', '4', '5', '0']
-};
-
-function actualizarChat(texto) {
-  const chatbox = document.getElementById('chatbox');
-  chatbox.innerHTML += `\n${texto}`;
-  chatbox.scrollTop = chatbox.scrollHeight;
-}
-
-function mostrarBotones(opciones) {
-  const container = document.getElementById('buttonsContainer');
-  container.innerHTML = '';
-  opciones.forEach(op => {
-    const btn = document.createElement('button');
-    btn.className = 'option-btn';
-    btn.innerText = op;
-    btn.onclick = () => procesarEntrada(op);
-    container.appendChild(btn);
-  });
-}
-
-function mostrarQR(url) {
-  const chatbox = document.getElementById('chatbox');
-  const qrURL = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(url)}`;
-  chatbox.innerHTML += `\n<img src="${qrURL}" alt="QR" style="margin-top:10px; width:120px; height:120px;">`;
-}
-
-function procesarEntrada(entrada) {
-  if (!entrada) return;
-  switch (estado) {
-    case 'menu':
-      if (entrada === '1') { estado = 'info_general'; actualizarChat(submenuInfoGeneral); mostrarBotones(botones['info_general']); }
-      else if (entrada === '2') { estado = 'faq'; actualizarChat(submenuFAQ); mostrarBotones(botones['faq']); }
-      else if (entrada === '3') { estado = 'otros'; actualizarChat(submenuOtros); mostrarBotones(botones['otros']); }
-      else if (entrada === '4') { estado = 'finalizado'; actualizarChat("🚪 Gracias por usar el chatbot. ¡Hasta luego!"); mostrarBotones([]); }
-      else actualizarChat("❌ Opción inválida.");
-      break;
-
-    case 'otros':
-      if (entrada === '1') {
-        actualizarChat("🚌 Buses gratuitos de acercamiento.");
-        mostrarQR(urlBuses);
-      } else if (entrada === '2') {
-        actualizarChat("🚨 Denuncias en plataforma institucional.");
-      } else if (entrada === '3') {
-        actualizarChat("🏥 Atención médica gratuita.");
-      } else if (entrada === '4') {
-        actualizarChat("📘 Adaptación académica para condiciones especiales. Escanea el siguiente código QR:");
-        mostrarQR(urlAdaptacion);
-      } else if (entrada === '5') {
-        actualizarChat("↩️ Reincorporación mediante solicitud formal.");
-      } else if (entrada === '0') {
-        estado = 'menu';
-        actualizarChat(menuPrincipal);
-        mostrarBotones(botones['menu']);
-        return;
+      if (opcion === "1") {
+        respuesta = "<div class='respuesta-bot'>👷‍♂️ Perfil de egreso: Profesional capacitado para liderar procesos organizacionales, con fuerte base en ingeniería, gestión y responsabilidad social.</div>";
+      } else if (opcion === "2") {
+        respuesta = "<div class='respuesta-bot'>❓ Preguntas Frecuentes:\n1. ¿Cómo tramitar licencias médicas?\n2. ¿Dónde postular a ayudantías?\n3. ¿Puedo cambiar de sede?</div>";
+      } else if (opcion === "3") {
+        respuesta = "<div class='respuesta-bot'>🔧 Otros temas:\n- Buses de acercamiento\n- Servicio médico estudiantil\n- Adaptación académica</div>";
+      } else if (opcion === "4") {
+        respuesta = "<div class='respuesta-bot'>🚪 Chat finalizado. ¡Gracias por usar el asistente!</div>";
       } else {
-        actualizarChat("❌ Opción inválida.");
+        respuesta = "<div class='respuesta-bot'>⚠️ Opción inválida. Inténtalo de nuevo.</div>";
       }
-      actualizarChat(submenuOtros);
-      mostrarBotones(botones['otros']);
-      break;
 
-    case 'info_general':
-      const info = {
-        '1': "👨‍🎓 Perfil: lidera procesos organizacionales.",
-        '2': "🎯 Objetivo: formar profesionales íntegros.",
-        '3': "📚 Áreas: Ciencias Básicas, Ingeniería, Gestión."
-      };
-      if (entrada === '0') { estado = 'menu'; actualizarChat(menuPrincipal); mostrarBotones(botones['menu']); return; }
-      actualizarChat(info[entrada] || "❌ Opción inválida.");
-      actualizarChat(submenuInfoGeneral);
-      mostrarBotones(botones['info_general']);
-      break;
-
-    case 'faq':
-      if (entrada === '1') actualizarChat("📄 Licencias en Secretaría de Carrera dentro de 3 días.");
-      else if (entrada === '2') actualizarChat("🏢 Puedes trabajar en sector público, privado, industria.");
-      else if (entrada === '3') actualizarChat("🔄 Cambio de carrera/sede/institución sujeto a requisitos.");
-      else if (entrada === '4') actualizarChat("📝 Postulaciones: ayudantes, tutores, CEC.");
-      else if (entrada === '5') actualizarChat("📆 Inscripciones vía portal académico.");
-      else if (entrada === '6') actualizarChat("🎓 Becas disponibles según tipo y requisito.");
-      else if (entrada === '7') actualizarChat("📚 Biblioteca con múltiples recursos.");
-      else if (entrada === '0') { estado = 'menu'; actualizarChat(menuPrincipal); mostrarBotones(botones['menu']); return; }
-      else actualizarChat("❌ Opción inválida.");
-      actualizarChat(submenuFAQ);
-      mostrarBotones(botones['faq']);
-      break;
-
-    case 'finalizado':
-      actualizarChat("🚫 Chat finalizado. Recarga para comenzar de nuevo.");
-      mostrarBotones([]);
-      break;
-
-    default:
-      actualizarChat("⚠️ Estado desconocido.");
-      break;
-  }
-}
-
-window.onload = () => {
-  mostrarBotones(botones['menu']);
-  document.getElementById("userInput").addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      procesarEntrada(this.value.trim());
-      this.value = '';
+      chatbox.innerHTML += respuesta;
+      chatbox.scrollTop = chatbox.scrollHeight;
     }
-  });
-};
-</script>
+
+    function responderManual() {
+      const input = document.getElementById("userInput");
+      responder(input.value.trim());
+      input.value = "";
+    }
+  </script>
 
 </body>
 </html>
-
