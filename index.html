@@ -14,7 +14,7 @@
       border: 1px solid #ccc;
       border-radius: 10px;
       padding: 15px;
-      max-width: 600px;
+      max-width: 500px;
       height: 400px;
       overflow-y: auto;
       white-space: pre-line;
@@ -45,6 +45,10 @@
       font-size: 16px;
       margin-left: 10px;
     }
+    img.qr {
+      margin-top: 10px;
+      width: 150px;
+    }
   </style>
 </head>
 <body>
@@ -67,24 +71,31 @@
 <script>
 let estado = 'menu';
 
-const urlAdaptacion = "https://scanned.page/p/681e2c35aadee";
 const urlBuses = "https://uta.cl/buses";
+const urlAdaptacion = "https://scanned.page/p/681e2c35aadee";
 
-const menuPrincipal = "¿En qué te puedo ayudar? \n1. Información general de la carrera \n2. Preguntas Frecuentes (FAQ) \n3. Otros \n4. Salir";
-const submenuInfoGeneral = "📌 Submenú - Información General: \n1. Perfil de egreso \n2. Objetivos de la carrera \n3. Áreas de formación \n0. Volver";
-const submenuFAQ = "❓ Submenú - Preguntas Frecuentes: \n1. Licencias Médicas \n2. Trabajo al egresar \n3. Traslado \n4. Postulaciones \n5. Inscripciones \n6. Becas \n7. Biblioteca \n0. Volver";
-const submenuOtros = "🔧 Submenú - Otros: \n1. Buses de acercamiento \n2. Denuncias y Acoso \n3. Servicio Médico Estudiantil \n4. Adaptación Regular Académica \n5. Reincorporación a la carrera \n0. Volver al menú principal";
+const menuPrincipal = "¿En qué te puedo ayudar?\n1. Información general de la carrera\n2. Preguntas Frecuentes (FAQ)\n3. Otros\n4. Salir";
+const submenuInfoGeneral = "📌 Submenú - Información General:\n1. Perfil de egreso\n2. Objetivos de la carrera\n3. Áreas de formación\n0. Volver";
+const submenuFAQ = "❓ Submenú - Preguntas Frecuentes:\n1. Licencias Médicas\n2. Trabajo al egresar\n3. Traslado\n4. Postulaciones\n5. Inscripciones\n6. Becas\n7. Biblioteca\n0. Volver";
+const submenuOtros = "🔧 Submenú - Otros:\n1. Buses de acercamiento\n2. Denuncias y Acoso\n3. Servicio Médico Estudiantil\n4. Adaptación Regular Académica\n0. Volver";
 
 const botones = {
   'menu': ['1', '2', '3', '4'],
   'info_general': ['1', '2', '3', '0'],
   'faq': ['1', '2', '3', '4', '5', '6', '7', '0'],
-  'otros': ['1', '2', '3', '4', '5', '0']
+  'otros': ['1', '2', '3', '4', '0']
 };
 
 function actualizarChat(texto) {
   const chatbox = document.getElementById('chatbox');
-  chatbox.innerHTML += `\\n${texto}`;
+  chatbox.innerHTML += `\n${texto}`;
+  chatbox.scrollTop = chatbox.scrollHeight;
+}
+
+function mostrarQR(url) {
+  const chatbox = document.getElementById('chatbox');
+  const qr = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(url)}`;
+  chatbox.innerHTML += `\n<img class="qr" src="${qr}" alt="QR">`;
   chatbox.scrollTop = chatbox.scrollHeight;
 }
 
@@ -100,14 +111,9 @@ function mostrarBotones(opciones) {
   });
 }
 
-function mostrarQR(url) {
-  const chatbox = document.getElementById('chatbox');
-  const qrURL = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(url)}`;
-  chatbox.innerHTML += `\\n<img src="${qrURL}" alt="QR" style="margin-top:10px; width:120px; height:120px;">`;
-}
-
 function procesarEntrada(entrada) {
   if (!entrada) return;
+
   switch (estado) {
     case 'menu':
       if (entrada === '1') { estado = 'info_general'; actualizarChat(submenuInfoGeneral); mostrarBotones(botones['info_general']); }
@@ -117,64 +123,42 @@ function procesarEntrada(entrada) {
       else actualizarChat("❌ Opción inválida.");
       break;
 
-    case 'otros':
-      if (entrada === '1') {
-        actualizarChat("🚌 Buses gratuitos de acercamiento.");
-        mostrarQR(urlBuses);
-      } else if (entrada === '2') {
-        actualizarChat("🚨 Denuncias en plataforma institucional.");
-      } else if (entrada === '3') {
-        actualizarChat("🏥 Atención médica gratuita.");
-      } else if (entrada === '4') {
-        actualizarChat("📘 Adaptación académica para condiciones especiales. Escanea el siguiente código QR:");
-        mostrarQR(urlAdaptacion);
-      } else if (entrada === '5') {
-        actualizarChat("↩️ Reincorporación mediante solicitud formal.");
-      } else if (entrada === '0') {
-        estado = 'menu';
-        actualizarChat(menuPrincipal);
-        mostrarBotones(botones['menu']);
-        return;
-      } else {
-        actualizarChat("❌ Opción inválida.");
-      }
-      actualizarChat(submenuOtros);
-      mostrarBotones(botones['otros']);
-      break;
-
     case 'info_general':
-      const info = {
-        '1': "👨‍🎓 Perfil: lidera procesos organizacionales.",
-        '2': "🎯 Objetivo: formar profesionales íntegros.",
-        '3': "📚 Áreas: Ciencias Básicas, Ingeniería, Gestión."
-      };
-      if (entrada === '0') { estado = 'menu'; actualizarChat(menuPrincipal); mostrarBotones(botones['menu']); return; }
-      actualizarChat(info[entrada] || "❌ Opción inválida.");
-      actualizarChat(submenuInfoGeneral);
+      if (entrada === '1') actualizarChat("👨‍🎓 Perfil de egreso: profesional capaz de liderar procesos industriales.");
+      else if (entrada === '2') actualizarChat("🎯 Objetivos: formar profesionales con sólidos conocimientos en ingeniería.");
+      else if (entrada === '3') actualizarChat("🧠 Áreas: gestión, operaciones, optimización, calidad.");
+      else if (entrada === '0') { estado = 'menu'; actualizarChat(menuPrincipal); mostrarBotones(botones['menu']); return; }
+      else actualizarChat("❌ Opción inválida.");
       mostrarBotones(botones['info_general']);
       break;
 
     case 'faq':
-      if (entrada === '1') actualizarChat("📄 Licencias en Secretaría de Carrera dentro de 3 días.");
-      else if (entrada === '2') actualizarChat("🏢 Puedes trabajar en sector público, privado, industria.");
-      else if (entrada === '3') actualizarChat("🔄 Cambio de carrera/sede/institución sujeto a requisitos.");
-      else if (entrada === '4') actualizarChat("📝 Postulaciones: ayudantes, tutores, CEC.");
-      else if (entrada === '5') actualizarChat("📆 Inscripciones vía portal académico.");
-      else if (entrada === '6') actualizarChat("🎓 Becas disponibles según tipo y requisito.");
-      else if (entrada === '7') actualizarChat("📚 Biblioteca con múltiples recursos.");
+      if (entrada === '1') actualizarChat("📄 Licencias deben presentarse en Secretaría dentro de 3 días.");
+      else if (entrada === '2') actualizarChat("🏢 Trabajo al egresar: sector público, privado, consultoría.");
+      else if (entrada === '3') actualizarChat("🔄 Traslado: se realiza con formulario especial en Secretaría.");
+      else if (entrada === '4') actualizarChat("📝 Postulaciones a ayudantías se abren cada semestre.");
+      else if (entrada === '5') actualizarChat("📆 Inscripciones: en línea mediante intranet institucional.");
+      else if (entrada === '6') actualizarChat("🎓 Becas: alimenticia, excelencia académica, residencia.");
+      else if (entrada === '7') actualizarChat("📚 Biblioteca: acceso a libros, bases de datos y salas de estudio.");
       else if (entrada === '0') { estado = 'menu'; actualizarChat(menuPrincipal); mostrarBotones(botones['menu']); return; }
       else actualizarChat("❌ Opción inválida.");
-      actualizarChat(submenuFAQ);
       mostrarBotones(botones['faq']);
       break;
 
-    case 'finalizado':
-      actualizarChat("🚫 Chat finalizado. Recarga para comenzar de nuevo.");
-      mostrarBotones([]);
-      break;
-
-    default:
-      actualizarChat("⚠️ Estado desconocido.");
+    case 'otros':
+      if (entrada === '1') {
+        actualizarChat("🚌 Consulta los horarios y paradas de buses de acercamiento:");
+        mostrarQR(urlBuses);
+      }
+      else if (entrada === '2') actualizarChat("🚨 Las denuncias se pueden realizar de forma confidencial en la Dirección de Género.");
+      else if (entrada === '3') actualizarChat("🏥 El servicio médico atiende con tu TUI. Horario: 8:00 - 17:00.");
+      else if (entrada === '4') {
+        actualizarChat("📘 Adaptación académica se solicita vía DAE con respaldo médico o psicológico:");
+        mostrarQR(urlAdaptacion);
+      }
+      else if (entrada === '0') { estado = 'menu'; actualizarChat(menuPrincipal); mostrarBotones(botones['menu']); return; }
+      else actualizarChat("❌ Opción inválida.");
+      mostrarBotones(botones['otros']);
       break;
   }
 }
@@ -192,4 +176,3 @@ window.onload = () => {
 
 </body>
 </html>
-
