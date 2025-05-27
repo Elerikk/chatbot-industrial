@@ -124,22 +124,22 @@ function procesarEntrada(entrada) {
       break;
 
     case 'info_general':
-      if (entrada === '1') actualizarChat("👨‍🎓 Perfil de egreso: profesional capaz de liderar procesos industriales.");
-      else if (entrada === '2') actualizarChat("🎯 Objetivos: formar profesionales con sólidos conocimientos en ingeniería.");
-      else if (entrada === '3') actualizarChat("🧠 Áreas: gestión, operaciones, optimización, calidad.");
+      if (entrada === '1') actualizarChat("👨‍🎓 Perfil: lidera procesos organizacionales.\n\n" + submenuInfoGeneral);
+      else if (entrada === '2') actualizarChat("🎯 Objetivo: formar profesionales íntegros.\n\n" + submenuInfoGeneral);
+      else if (entrada === '3') actualizarChat("📚 Áreas: Ciencias Básicas, Ingeniería, Gestión.\n\n" + submenuInfoGeneral);
       else if (entrada === '0') { estado = 'menu'; actualizarChat(menuPrincipal); mostrarBotones(botones['menu']); return; }
       else actualizarChat("❌ Opción inválida.");
       mostrarBotones(botones['info_general']);
       break;
 
     case 'faq':
-      if (entrada === '1') actualizarChat("📄 Licencias deben presentarse en Secretaría dentro de 3 días.");
-      else if (entrada === '2') actualizarChat("🏢 Trabajo al egresar: sector público, privado, consultoría.");
-      else if (entrada === '3') actualizarChat("🔄 Traslado: se realiza con formulario especial en Secretaría.");
-      else if (entrada === '4') actualizarChat("📝 Postulaciones a ayudantías se abren cada semestre.");
-      else if (entrada === '5') actualizarChat("📆 Inscripciones: en línea mediante intranet institucional.");
-      else if (entrada === '6') actualizarChat("🎓 Becas: alimenticia, excelencia académica, residencia.");
-      else if (entrada === '7') actualizarChat("📚 Biblioteca: acceso a libros, bases de datos y salas de estudio.");
+      if (entrada === '1') actualizarChat("📄 Licencias en Secretaría de Carrera dentro de 3 días.\n\n" + submenuFAQ);
+      else if (entrada === '2') actualizarChat("🏢 Puedes trabajar en sector público, privado, industria.\n\n" + submenuFAQ);
+      else if (entrada === '3') actualizarChat("🔄 Cambio de carrera/sede/institución sujeto a requisitos.\n\n" + submenuFAQ);
+      else if (entrada === '4') actualizarChat("📝 Postulaciones: ayudantes, tutores, CEC.\n\n" + submenuFAQ);
+      else if (entrada === '5') actualizarChat("📆 Inscripciones vía portal académico.\n\n" + submenuFAQ);
+      else if (entrada === '6') actualizarChat("🎓 Becas disponibles según tipo y requisito.\n\n" + submenuFAQ);
+      else if (entrada === '7') actualizarChat("📚 Biblioteca con múltiples recursos.\n\n" + submenuFAQ);
       else if (entrada === '0') { estado = 'menu'; actualizarChat(menuPrincipal); mostrarBotones(botones['menu']); return; }
       else actualizarChat("❌ Opción inválida.");
       mostrarBotones(botones['faq']);
@@ -149,12 +149,14 @@ function procesarEntrada(entrada) {
       if (entrada === '1') {
         actualizarChat("🚌 Consulta los horarios y paradas de buses de acercamiento:");
         mostrarQR(urlBuses);
+        actualizarChat("\n\n" + submenuOtros);
       }
-      else if (entrada === '2') actualizarChat("🚨 Las denuncias se pueden realizar de forma confidencial en la Dirección de Género.");
-      else if (entrada === '3') actualizarChat("🏥 El servicio médico atiende con tu TUI. Horario: 8:00 - 17:00.");
+      else if (entrada === '2') actualizarChat("🚨 Las denuncias se pueden realizar en la Dirección de Género.\n\n" + submenuOtros);
+      else if (entrada === '3') actualizarChat("🏥 Servicio médico disponible con tu TUI. Horario: 8:00 a 17:00 hrs.\n\n" + submenuOtros);
       else if (entrada === '4') {
-        actualizarChat("📘 Adaptación académica se solicita vía DAE con respaldo médico o psicológico:");
+        actualizarChat("📘 Adaptación académica se solicita con respaldo médico o psicológico:");
         mostrarQR(urlAdaptacion);
+        actualizarChat("\n\n" + submenuOtros);
       }
       else if (entrada === '0') { estado = 'menu'; actualizarChat(menuPrincipal); mostrarBotones(botones['menu']); return; }
       else actualizarChat("❌ Opción inválida.");
