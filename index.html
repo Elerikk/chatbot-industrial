@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+# Guardar el archivo que el usuario proporcionó como HTML para que pueda subirlo a GitHub
+html_usuario = '''<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -70,10 +71,10 @@ let estado = 'menu';
 const urlAdaptacion = "https://scanned.page/p/681e2c35aadee";
 const urlBuses = "https://uta.cl/buses";
 
-const menuPrincipal = "¿En qué te puedo ayudar?\n1. Información general de la carrera\n2. Preguntas Frecuentes (FAQ)\n3. Otros\n4. Salir";
-const submenuInfoGeneral = "📌 Submenú - Información General:\n1. Perfil de egreso\n2. Objetivos de la carrera\n3. Áreas de formación\n0. Volver";
-const submenuFAQ = "❓ Submenú - Preguntas Frecuentes:\n1. Licencias Médicas\n2. Trabajo al egresar\n3. Traslado\n4. Postulaciones\n5. Inscripciones\n6. Becas\n7. Biblioteca\n0. Volver";
-const submenuOtros = "🔧 Submenú - Otros:\n1. Buses de acercamiento\n2. Denuncias y Acoso\n3. Servicio Médico Estudiantil\n4. Adaptación Regular Académica\n5. Reincorporación a la carrera\n0. Volver al menú principal";
+const menuPrincipal = "¿En qué te puedo ayudar?\\n1. Información general de la carrera\\n2. Preguntas Frecuentes (FAQ)\\n3. Otros\\n4. Salir";
+const submenuInfoGeneral = "📌 Submenú - Información General:\\n1. Perfil de egreso\\n2. Objetivos de la carrera\\n3. Áreas de formación\\n0. Volver";
+const submenuFAQ = "❓ Submenú - Preguntas Frecuentes:\\n1. Licencias Médicas\\n2. Trabajo al egresar\\n3. Traslado\\n4. Postulaciones\\n5. Inscripciones\\n6. Becas\\n7. Biblioteca\\n0. Volver";
+const submenuOtros = "🔧 Submenú - Otros:\\n1. Buses de acercamiento\\n2. Denuncias y Acoso\\n3. Servicio Médico Estudiantil\\n4. Adaptación Regular Académica\\n5. Reincorporación a la carrera\\n0. Volver al menú principal";
 
 const botones = {
   'menu': ['1', '2', '3', '4'],
@@ -84,7 +85,7 @@ const botones = {
 
 function actualizarChat(texto) {
   const chatbox = document.getElementById('chatbox');
-  chatbox.innerHTML += `\n${texto}`;
+  chatbox.innerHTML += `\\n${texto}`;
   chatbox.scrollTop = chatbox.scrollHeight;
 }
 
@@ -103,7 +104,7 @@ function mostrarBotones(opciones) {
 function mostrarQR(url) {
   const chatbox = document.getElementById('chatbox');
   const qrURL = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(url)}`;
-  chatbox.innerHTML += `\n<img src="${qrURL}" alt="QR" style="margin-top:10px; width:120px; height:120px;">`;
+  chatbox.innerHTML += `\\n<img src="${qrURL}" alt="QR" style="margin-top:10px; width:120px; height:120px;">`;
 }
 
 function procesarEntrada(entrada) {
@@ -192,6 +193,11 @@ window.onload = () => {
 
 </body>
 </html>
+'''
 
-</body>
-</html>
+# Guardar como archivo listo para GitHub
+file_path = "/mnt/data/index-chatbot-industrial.html"
+with open(file_path, "w", encoding="utf-8") as f:
+    f.write(html_usuario)
+
+file_path
