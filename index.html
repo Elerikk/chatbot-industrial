@@ -134,7 +134,7 @@ function procesarEntrada(entrada) {
       const info = {
         '1': "👨‍🎓 Perfil de egreso: El Ingeniero Civil Industrial es capaz de gestionar sistemas, optimizar procesos, liderar proyectos y emprender.",
         '2': "🎯 Objetivos: Formar profesionales capaces de integrar personas, recursos y tecnología, con habilidades para tomar decisiones y gestionar estratégicamente en organizaciones.",
-        '3': "📚 Áreas: Operaciones, proyectos, economía, logística, calidad e innovación."
+        '3': "📚 Áreas: Operaciones, Proyectos, Economía, Logística, Calidad e Innovación."
       };
       if (entrada === '0') { estado = 'menu'; actualizarChat(menuPrincipal); mostrarBotones(botones['menu']); return; }
       actualizarChat(info[entrada] || "❌ Opción inválida.");
