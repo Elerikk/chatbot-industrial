@@ -171,9 +171,9 @@ function procesarEntrada(entrada) {
     case 'inscripciones':
       const ins = {
         '1': "📆 Inscripción según calendario académico: primer semestre a mediados de enero y segundo semestre del 23 al 31 de agosto.",
-        '2': "💻 Vía plataforma académica de la universidad.",
-        '3': "✏️ Modificaciones permitidas en periodo de ajustes.",
-        '4': "⏱️ Debes justificar inscripción fuera de plazo."
+        '2': "💻 Se realiza vía plataforma académica de la universidad: <a href='https://portal.uta.cl/sign-in?redirectURL=%2Fhome' target='_blank'>portal.uta.cl</a>.",
+        '3': "✏️ Modificaciones según calendario: primer semestre a fines de marzo, segundo semestre a mediados de agosto (fechas pueden variar).",
+        '4': "⏱️ Inscripción fuera de plazo requiere justificación o contacto con Jefatura de Carrera."
       };
       if (entrada === '0') { estado = 'faq'; actualizarChat(submenuFAQ); mostrarBotones(botones['faq']); return; }
       actualizarChat(ins[entrada] || "❌ Opción inválida.");
