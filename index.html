@@ -95,7 +95,7 @@ const botones = {
 
 function actualizarChat(texto) {
   const chatbox = document.getElementById('chatbox');
-  chatbox.innerHTML += `\n${texto}`;
+  chatbox.innerHTML += `<p>${texto}</p>`;
   chatbox.scrollTop = chatbox.scrollHeight;
 }
 
