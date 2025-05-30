@@ -132,9 +132,9 @@ function procesarEntrada(entrada) {
 
     case 'info_general':
       const info = {
-        '1': "👨‍🎓 Perfil de egreso: Lidera procesos organizacionales.",
-        '2': "🎯 Objetivos: Formar profesionales íntegros.",
-        '3': "📚 Áreas: Ciencias Básicas, Ingeniería, Gestión."
+        '1': "👨‍🎓 Perfil de egreso: El Ingeniero Civil Industrial es capaz de gestionar sistemas, optimizar procesos, liderar proyectos y emprender.",
+        '2': "🎯 Objetivos: Crear valor en organizaciones gestionando personas, recursos y tecnología.",
+        '3': "📚 Áreas: Operaciones, proyectos, economía, logística, calidad e innovación."
       };
       if (entrada === '0') { estado = 'menu'; actualizarChat(menuPrincipal); mostrarBotones(botones['menu']); return; }
       actualizarChat(info[entrada] || "❌ Opción inválida.");
