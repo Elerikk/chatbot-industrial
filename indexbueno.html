@@ -58,7 +58,7 @@
 1. Información general de la carrera  
 2. Preguntas Frecuentes (FAQ)  
 3. Otros  
-4. Salir</div>
+0. Salir</div>
 
 <div class="buttons-container" id="buttonsContainer"></div>
 
@@ -201,12 +201,12 @@ function procesarEntrada(entrada) {
 
     case 'biblioteca':
       const bib = {
-        '1': "📚 Acceso a libros físicos y digitales, para mas información http://sb.uta.cl/sbuta/prestamos-y-servicios/.",
-        '2': "📖 Reservas de salas tipo box, para mas información http://sb.uta.cl/sbuta/prestamos-y-servicios/.",
-        '3': "🖨️ Servicio de impresión académica, para mas información http://sb.uta.cl/sbuta/prestamos-y-servicios/.",
-        '4': "📱 Préstamo de tablets e iPads, para mas información http://sb.uta.cl/sbuta/prestamos-y-servicios/.",
-        '5': "🎥 Material audiovisual disponible, para mas información http://sb.uta.cl/sbuta/prestamos-y-servicios/.",
-        '6': "🧏 Recursos para inclusión y diversidad, para mas información http://sb.uta.cl/sbuta/prestamos-y-servicios/."
+        '1': "📚 Es un acceso a libros físicos y digitales, para mas información http://sb.uta.cl/sbuta/prestamos-y-servicios/.",
+        '2': "📖 Puedes reservas de salas tipo box, para mas información http://sb.uta.cl/sbuta/prestamos-y-servicios/.",
+        '3': "🖨️ Es un servicio de impresión académica, para mas información http://sb.uta.cl/sbuta/prestamos-y-servicios/.",
+        '4': "📱 Es un servicio de préstamo de tablets e iPads, para mas información http://sb.uta.cl/sbuta/prestamos-y-servicios/.",
+        '5': "🎥 Material audiovisual que se dispone en la salas de multimedia, para mas información http://sb.uta.cl/sbuta/prestamos-y-servicios/.",
+        '6': "🧏 Sala con recursos para la inclusión y diversidad, para mas información http://sb.uta.cl/sbuta/prestamos-y-servicios/."
       };
       if (entrada === '0') { estado = 'faq'; actualizarChat(submenuFAQ); mostrarBotones(botones['faq']); return; }
       actualizarChat(bib[entrada] || "❌ Opción inválida.");
@@ -217,7 +217,7 @@ function procesarEntrada(entrada) {
     case 'otros':
       if (entrada === '1') { actualizarChat("🚌 Consulta los horarios y paradas de buses de acercamiento:"); mostrarQR(urlBuses); }
       else if (entrada === '2') actualizarChat("🚨 Las denuncias se pueden realizar en la Dirección de Género, para mas información de formularios https://www.uta.cl/index.php/deygen/.");
-      else if (entrada === '3') actualizarChat("🏥 Servicio médico disponible con tu TUI. Horario: 8:00 a 17:00 hrs.");
+      else if (entrada === '3') actualizarChat("🏥 Servicio médico disponible en el Horario: 8:00 a 17:00 hrs. Algunas de las prestaciones las puedes encontrar en este link https://webdae.uta.cl/index.php/prestaciones/.");
       else if (entrada === '4') { actualizarChat("📘 Adaptación académica se solicita con respaldo médico o psicológico para los alumnos:"); mostrarQR(urlAdaptacion); }
       else if (entrada === '0') { estado = 'menu'; actualizarChat(menuPrincipal); mostrarBotones(botones['menu']); return; }
       else actualizarChat("❌ Opción inválida.");
