@@ -158,9 +158,9 @@ function procesarEntrada(entrada) {
 
     case 'postulaciones':
       const post = {
-        '1': "🤝 Tutoría Par: apoyo entre estudiantes.",
-        '2': "👥 CEC: Centro de Estudiantes de Carrera.",
-        '3': "🧑‍🏫 Ayudante: postulación con requisitos."
+        '1': "🤝 Tutoría Par: Estudiantes guías que apoyan a sus compañeros/as en su proceso académico y de adaptación. Convocatorias en: <a href='https://www.instagram.com/formacionintegraluta/' target='_blank'>@formacionintegraluta</a>.",
+        '2': "👥 CEC: El Centro de Estudiantes de Carrera organiza actividades y representa a los estudiantes. Más info en: <a href='https://www.instagram.com/cec_industrial/' target='_blank'>@cec_industrial</a>.",
+        '3': "🧑‍🏫 Ayudante: Estudiante que resuelve dudas de la asignatura, al inicio del semestre, el Departamento publica las asignaturas que requieren ayudantes. Cada una tiene requisitos específicos."
       };
       if (entrada === '0') { estado = 'faq'; actualizarChat(submenuFAQ); mostrarBotones(botones['faq']); return; }
       actualizarChat(post[entrada] || "❌ Opción inválida.");
@@ -183,14 +183,14 @@ function procesarEntrada(entrada) {
 
     case 'becas':
       const bec = {
-        '1': "🍽️ Beca alimentación para alumnos vulnerables.",
-        '2': "🖨️ Fotocopias disponibles en centros autorizados.",
-        '3': "🏠 Residencia para estudiantes sin alojamiento en Arica.",
-        '4': "💳 Complemento para BAES insuficiente.",
-        '5': "📜 Apoyo económico para títulos y grados.",
-        '6': "🏥 Beca para internos en etapa final.",
-        '7': "🧑‍🏫 Apoyo a prácticas en pedagogía.",
-        '8': "🚌 Ayuda para viajes académicos."
+        '1': "🍽️ Beca alimentación para alumnos vulnerables. Más info: <a href='https://webdae.uta.cl/index.php/beneficios-complementarios/' target='_blank'>webdae.uta.cl</a>",
+        '2': "🖨️ Fotocopias disponibles en centros autorizados. Más info: <a href='https://webdae.uta.cl/index.php/beneficios-complementarios/' target='_blank'>webdae.uta.cl</a>",
+        '3': "🏠 Residencia para estudiantes sin alojamiento en Arica. Más info: <a href='https://webdae.uta.cl/index.php/beneficios-complementarios/' target='_blank'>webdae.uta.cl</a>",
+        '4': "💳 Complemento para BAES insuficiente. Más info: <a href='https://webdae.uta.cl/index.php/beneficios-complementarios/' target='_blank'>webdae.uta.cl</a>",
+        '5': "📜 Apoyo económico para títulos y grados. Más info: <a href='https://webdae.uta.cl/index.php/beneficios-complementarios/' target='_blank'>webdae.uta.cl</a>",
+        '6': "🏥 Beca para internos en etapa final. Más info: <a href='https://webdae.uta.cl/index.php/beneficios-complementarios/' target='_blank'>webdae.uta.cl</a>",
+        '7': "🧑‍🏫 Apoyo a prácticas en pedagogía. Más info: <a href='https://webdae.uta.cl/index.php/beneficios-complementarios/' target='_blank'>webdae.uta.cl</a>",
+        '8': "🚌 Ayuda para viajes académicos. Más info: <a href='https://webdae.uta.cl/index.php/beneficios-complementarios/' target='_blank'>webdae.uta.cl</a>"
       };
       if (entrada === '0') { estado = 'faq'; actualizarChat(submenuFAQ); mostrarBotones(botones['faq']); return; }
       actualizarChat(bec[entrada] || "❌ Opción inválida.");
@@ -201,11 +201,11 @@ function procesarEntrada(entrada) {
     case 'biblioteca':
       const bib = {
         '1': "📚 Acceso a libros físicos y digitales. Más info: <a href='http://sb.uta.cl/sbuta/prestamos-y-servicios/' target='_blank'>sb.uta.cl</a>.",
-        '2': "📖 Reservas de salas tipo box.",
-        '3': "🖨️ Servicio de impresión académica.",
-        '4': "📱 Préstamo de tablets e iPads.",
-        '5': "🎥 Material audiovisual disponible.",
-        '6': "🧏 Recursos para inclusión y diversidad."
+        '2': "📖 Reserva de salas tipo box. Más info: <a href='http://sb.uta.cl/sbuta/prestamos-y-servicios/' target='_blank'>sb.uta.cl</a>.",
+        '3': "🖨️ Servicio de impresión académica. Más info: <a href='http://sb.uta.cl/sbuta/prestamos-y-servicios/' target='_blank'>sb.uta.cl</a>.",
+        '4': "📱 Préstamo de tablets e iPads. Más info: <a href='http://sb.uta.cl/sbuta/prestamos-y-servicios/' target='_blank'>sb.uta.cl</a>.",
+        '5': "🎥 Material audiovisual disponible en salas multimedia. Más info: <a href='http://sb.uta.cl/sbuta/prestamos-y-servicios/' target='_blank'>sb.uta.cl</a>.",
+        '6': "🧏 Sala con recursos para inclusión y diversidad. Más info: <a href='http://sb.uta.cl/sbuta/prestamos-y-servicios/' target='_blank'>sb.uta.cl</a>."
       };
       if (entrada === '0') { estado = 'faq'; actualizarChat(submenuFAQ); mostrarBotones(botones['faq']); return; }
       actualizarChat(bib[entrada] || "❌ Opción inválida.");
