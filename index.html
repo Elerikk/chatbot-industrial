@@ -147,7 +147,7 @@ function procesarEntrada(entrada) {
     case 'faq':
       if (entrada === '1') actualizarChat("📄 Licencias en Secretaría de Carrera dentro de 3 días.");
       else if (entrada === '2') actualizarChat("🏢 Puedes trabajar en sector público, privado, industria.");
-      else if (entrada === '3') { estado = 'postulaciones'; actualizarChat(submenuTraslado); mostrarBotones(botones['traslado']); return; }
+      else if (entrada === '3') { estado = 'traslado'; actualizarChat(submenuTraslado); mostrarBotones(botones['traslado']); return; }
       else if (entrada === '4') { estado = 'postulaciones'; actualizarChat(submenuPostulaciones); mostrarBotones(botones['postulaciones']); return; }
       else if (entrada === '5') { estado = 'inscripciones'; actualizarChat(submenuInscripciones); mostrarBotones(botones['inscripciones']); return; }
       else if (entrada === '6') { estado = 'becas'; actualizarChat(submenuBecas); mostrarBotones(botones['becas']); return; }
@@ -170,6 +170,18 @@ function procesarEntrada(entrada) {
       mostrarBotones(botones['postulaciones']);
       break;
 
+    case 'traslado':
+      const post = {
+        '1': "📍 El traslado entre sedes debe ser solicitado en Secretaría de Estudios. Requiere justificación académica o personal.",
+        '2': "📄 Debes presentar una carta formal explicando los motivos del traslado y adjuntar los respaldos necesarios.",
+        '3': "⏳ El proceso de evaluación puede demorar hasta 15 días hábiles. Recibirás una notificación por correo institucional.",
+      };
+      if (entrada === '0') { estado = 'faq'; actualizarChat(submenuFAQ); mostrarBotones(botones['faq']); return;}
+      actualizarChat(post[entrada] || "❌ Opción inválida.");
+      actualizarChat(submenuTraslado);
+      mostrarBotones(botones['traslado']);
+      break;
+      
     case 'inscripciones':
       const ins = {
         '1': "📆 Inscripción según calendario académico: primer semestre a mediados de enero y segundo semestre del 23 al 31 de agosto.",
