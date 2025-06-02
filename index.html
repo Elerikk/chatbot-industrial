@@ -158,7 +158,7 @@ function procesarEntrada(entrada) {
       mostrarBotones(botones['faq']);
       break;
       
-    case 'Traslado':
+    case 'traslado':
       const post = {
         '1': "📚 El traslado de carrera dentro de la universidad se solicita en Secretaría de Carrera durante los periodos oficiales. Requiere evaluación académica y cupo disponible.",
         '2': "🏛️ El traslado desde otra institución requiere presentar antecedentes académicos, carta de solicitud y plan de estudios. Debe postularse en los plazos establecidos por la Dirección de Docencia."
@@ -166,7 +166,7 @@ function procesarEntrada(entrada) {
       if (entrada === '0') { estado = 'faq'; actualizarChat(submenuFAQ); mostrarBotones(botones['faq']); return; }
       actualizarChat(post[entrada] || "❌ Opción inválida.");
       actualizarChat(submenuTraslado);
-      mostrarBotones(botones['postulaciones']);
+      mostrarBotones(botones['traslado']);
       break;
 
     case 'postulaciones':
