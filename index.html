@@ -177,7 +177,7 @@ function procesarEntrada(entrada) {
         '3': "⏳ El proceso de evaluación puede demorar hasta 15 días hábiles. Recibirás una notificación por correo institucional.",
       };
       if (entrada === '0') { estado = 'faq'; actualizarChat(submenuFAQ); mostrarBotones(botones['faq']); return;}
-      actualizarChat(post[entrada] || "❌ Opción inválida.");
+      actualizarChat(traslado[entrada] || "❌ Opción inválida.");
       actualizarChat(submenuTraslado);
       mostrarBotones(botones['traslado']);
       break;
