@@ -77,6 +77,7 @@ const menuPrincipal = "¿En qué te puedo ayudar?\n1. Información general de la
 const submenuInfoGeneral = "📌 Submenú - Información General:\n1. Perfil de egreso\n2. Objetivos de la carrera\n3. Áreas de formación\n0. Volver";
 const submenuFAQ = "❓ Submenú - Preguntas Frecuentes:\n1. Licencias Médicas\n2. Trabajo al egresar\n3. Traslado\n4. Postulaciones\n5. Asignaturas\n6. Becas\n7. Biblioteca\n0. Volver";
 const submenuOtros = "🔧 Submenú - Otros:\n1. Buses de acercamiento\n2. Denuncias y Acoso\n3. Servicio Médico Estudiantil\n4. Adaptación Regular Académica\n0. Volver";
+const submenuTraslado = "🔄 Submenú - Traslado:\n1. Traslado de carrera\n2. Traslado de institución\n0. Volver";
 const submenuPostulaciones = "📝 Submenú - Postulaciones:\n1. Tutoría Par\n2. CEC\n3. Ayudante de Asignatura\n0. Volver";
 const submenuInscripciones = "📆 Submenú - Asignaturas:\n1. ¿Cuándo debo inscribirme?\n2. ¿Cómo inscribo las asignaturas?\n3. ¿Puedo modificar mis asignaturas inscritas?\n4. Inscripción fuera de plazo\n0. Volver";
 const submenuBecas = "🎓 Submenú - Becas:\n1. Beca de Ayuda Solidaria de Alimentación\n2. Beca Fotocopias\n3. Beca Residencia\n4. Beca Complemento BAES\n5. Beca Títulos y Grados\n6. Beca Internado\n7. Beca Práctica II y Pedagogía\n8. Beca Viaje\n0. Volver";
@@ -87,6 +88,7 @@ const botones = {
   'info_general': ['1', '2', '3', '0'],
   'faq': ['1', '2', '3', '4', '5', '6', '7', '0'],
   'otros': ['1', '2', '3', '4', '0'],
+  'traslado': ['1', '2', '0'],
   'postulaciones': ['1', '2', '3', '0'],
   'inscripciones': ['1', '2', '3', '4', '0'],
   'becas': ['1', '2', '3', '4', '5', '6', '7', '8', '0'],
@@ -154,6 +156,17 @@ function procesarEntrada(entrada) {
       else actualizarChat("❌ Opción inválida.");
       actualizarChat(submenuFAQ);
       mostrarBotones(botones['faq']);
+      break;
+      
+    case 'Traslado':
+      const post = {
+        '1': "📚 El traslado de carrera dentro de la universidad se solicita en Secretaría de Carrera durante los periodos oficiales. Requiere evaluación académica y cupo disponible.",
+        '2': "🏛️ El traslado desde otra institución requiere presentar antecedentes académicos, carta de solicitud y plan de estudios. Debe postularse en los plazos establecidos por la Dirección de Docencia."
+      };
+      if (entrada === '0') { estado = 'faq'; actualizarChat(submenuFAQ); mostrarBotones(botones['faq']); return; }
+      actualizarChat(post[entrada] || "❌ Opción inválida.");
+      actualizarChat(submenuTraslado);
+      mostrarBotones(botones['postulaciones']);
       break;
 
     case 'postulaciones':
