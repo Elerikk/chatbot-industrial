@@ -147,7 +147,7 @@ function procesarEntrada(entrada) {
     case 'faq':
       if (entrada === '1') actualizarChat("📄 Licencias en Secretaría de Carrera dentro de 3 días.");
       else if (entrada === '2') actualizarChat("🏢 Puedes trabajar en sector público, privado, industria.");
-      else if (entrada === '3') { estado = 'postulaciones'; actualizarChat(submenuPostulaciones); mostrarBotones(botones['postulaciones']); return; }
+      else if (entrada === '3') { estado = 'postulaciones'; actualizarChat(submenuTraslado); mostrarBotones(botones['traslado']); return; }
       else if (entrada === '4') { estado = 'postulaciones'; actualizarChat(submenuPostulaciones); mostrarBotones(botones['postulaciones']); return; }
       else if (entrada === '5') { estado = 'inscripciones'; actualizarChat(submenuInscripciones); mostrarBotones(botones['inscripciones']); return; }
       else if (entrada === '6') { estado = 'becas'; actualizarChat(submenuBecas); mostrarBotones(botones['becas']); return; }
