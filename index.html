@@ -81,6 +81,7 @@ const submenuPostulaciones = "📝 Submenú - Postulaciones:\n1. Tutoría Par\n2
 const submenuInscripciones = "📆 Submenú - Asignaturas:\n1. ¿Cuándo debo inscribirme?\n2. ¿Cómo inscribo las asignaturas?\n3. ¿Puedo modificar mis asignaturas inscritas?\n4. Inscripción fuera de plazo\n0. Volver";
 const submenuBecas = "🎓 Submenú - Becas:\n1. Beca de Ayuda Solidaria de Alimentación\n2. Beca Fotocopias\n3. Beca Residencia\n4. Beca Complemento BAES\n5. Beca Títulos y Grados\n6. Beca Internado\n7. Beca Práctica II y Pedagogía\n8. Beca Viaje\n0. Volver";
 const submenuBiblioteca = "📚 Submenú - Biblioteca:\n1. Libros\n2. Box\n3. Impreteca\n4. Tablets\n5. Audiovisuales\n6. Inclusiva\n0. Volver";
+const submenuTraslado = "🔄Submenú - Traslado:\n1. De carrera\n2. De institución\n3. De Casa de estudio\n0. Volver";
 
 const botones = {
   'menu': ['1', '2', '3', '0'],
@@ -90,7 +91,8 @@ const botones = {
   'postulaciones': ['1', '2', '3', '0'],
   'inscripciones': ['1', '2', '3', '4', '0'],
   'becas': ['1', '2', '3', '4', '5', '6', '7', '8', '0'],
-  'biblioteca': ['1', '2', '3', '4', '5', '6', '0']
+  'biblioteca': ['1', '2', '3', '4', '5', '6', '0'],
+  'traslado': ['1', '2', '3', '0']
 };
 
 function actualizarChat(texto) {
@@ -154,6 +156,18 @@ function procesarEntrada(entrada) {
       else actualizarChat("❌ Opción inválida.");
       actualizarChat(submenuFAQ);
       mostrarBotones(botones['faq']);
+      break;
+
+    case 'traslado':
+      const post = {
+        '1': "📍 El traslado entre sedes debe ser solicitado en Secretaría de Estudios. Requiere justificación académica o personal.",
+        '2': "📄 Debes presentar una carta formal explicando los motivos del traslado y adjuntar los respaldos necesarios.",
+        '3': "⏳ El proceso de evaluación puede demorar hasta 15 días hábiles. Recibirás una notificación por correo institucional.",
+      };
+      if (entrada === '0') { estado = 'faq'; actualizarChat(submenuFAQ); mostrarBotones(botones['faq']); return;}
+      actualizarChat(post[entrada] || "❌ Opción inválida.");
+      actualizarChat(submenuTraslado);
+      mostrarBotones(botones['traslado']);
       break;
       
     case 'postulaciones':
