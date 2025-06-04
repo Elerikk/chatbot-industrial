@@ -58,6 +58,7 @@
 1. Información general de la carrera  
 2. Preguntas Frecuentes (FAQ)  
 3. Otros  
+4. Nosotros
 0. Salir</div>
 
 <div class="buttons-container" id="buttonsContainer"></div>
@@ -82,6 +83,10 @@ const submenuInscripciones = "📆 Submenú - Asignaturas:\n1. ¿Cuándo debo in
 const submenuBecas = "🎓 Submenú - Becas:\n1. Beca de Ayuda Solidaria de Alimentación\n2. Beca Fotocopias\n3. Beca Residencia\n4. Beca Complemento BAES\n5. Beca Títulos y Grados\n6. Beca Internado\n7. Beca Práctica II y Pedagogía\n8. Beca Viaje\n0. Volver";
 const submenuBiblioteca = "📚 Submenú - Biblioteca:\n1. Libros\n2. Box\n3. Impreteca\n4. Tablets\n5. Audiovisuales\n6. Inclusiva\n0. Volver";
 const submenuTraslado = "🔄Submenú - Traslado:\n1. De carrera\n2. De institución\n3. De Casa de estudio\n0. Volver";
+const submenuNosotros = "👥 Nosotros:\n1. Académicos\n2. Profesionales de Apoyo\n3. Secretarias\n0. Volver";
+const submenuAcademicos = "👨‍🏫 Académicos:\n1. Liliana Pedraja Rejas\n2. Diego Villagra Gil\n3. Gregorio Paz Segura\n4. Gonzalo Valdés González\n5. David Catari Vargas\n6. Hernando Bustos Andreu\n7. Carmen Araneda Guirriman\n8. Italo Marchioni Choque\n9. Laura Peréz Fuentes\n10. Amir Karbassi Yazdi\n11. Giuliani Coluccio Piñones\n0. Volver";
+const submenuProfesionales = "🧑‍💼 Profesionales de Apoyo:\n1. Sebastian Gonzalez Aguilera\n2. Vania Quezada Lara\n0. Volver";
+const submenuSecretarias = "📠 Secretarias:\n1. Karen Ibarra Jara\n2. Susana Viveros Flores\n3. Elida Huanca Pairo\n0. Volver";
 
 const botones = {
   'menu': ['1', '2', '3', '0'],
@@ -92,7 +97,11 @@ const botones = {
   'inscripciones': ['1', '2', '3', '4', '0'],
   'becas': ['1', '2', '3', '4', '5', '6', '7', '8', '0'],
   'biblioteca': ['1', '2', '3', '4', '5', '6', '0'],
-  'traslado': ['1', '2', '3', '0']
+  'traslado': ['1', '2', '3', '0'],
+  'nosotros': ['1', '2', '3', '0'],
+  'academicos': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
+  'profesionales': ['1', '2', '0'],
+  'secretarias': ['1', '2', '3', '0']  
 };
 
 function actualizarChat(texto) {
@@ -236,6 +245,44 @@ function procesarEntrada(entrada) {
       else actualizarChat("❌ Opción inválida.");
       actualizarChat(submenuOtros);
       mostrarBotones(botones['otros']);
+      break;
+      
+    case 'nosotros':
+      if (entrada === '1') { estado = 'academicos'; actualizarChat(submenuAcademicos); mostrarBotones(['1','2','3','4','5','6','7','8','9','10','11','0']); }
+      else if (entrada === '2') { estado = 'profesionales'; actualizarChat(submenuProfesionales); mostrarBotones(['1','2','0']); }
+      else if (entrada === '3') { estado = 'secretarias'; actualizarChat(submenuSecretarias); mostrarBotones(['1','2','3','0']); }
+      else if (entrada === '0') { estado = 'menu'; actualizarChat(menuPrincipal); mostrarBotones(['1','2','3','4','0']); }
+      break;
+
+    case 'academicos':
+      const horariosAcademicos = {
+        '1': "🕒 Liliana Pedraja Rejas atiende de lunes a viernes de 10:00 a 12:00 hrs.",
+        '2': "🕒 Diego Villagra Gil atiende de lunes a viernes de 10:00 a 12:00 hrs.",
+        '3': "🕒 Gregorio Paz Segura atiende de lunes a viernes de 10:00 a 12:00 hrs.",
+        '4': "🕒 Gonzalo Valdés González atiende de lunes a viernes de 10:00 a 12:00 hrs.",
+        '5': "🕒 David Catari Vargas atiende de lunes a viernes de 10:00 a 12:00 hrs.",
+        '6': "🕒 Hernando Bustos Andreu atiende de lunes a viernes de 10:00 a 12:00 hrs.",
+        '7': "🕒 Carmen Araneda Guirriman atiende de lunes a viernes de 10:00 a 12:00 hrs.",
+        '8': "🕒 Italo Marchioni Choque atiende de lunes a viernes de 10:00 a 12:00 hrs.",
+        '9': "🕒 Laura Peréz Fuentes atiende de lunes a viernes de 10:00 a 12:00 hrs.",
+        '10': "🕒 Amir Karbassi Yazdi atiende de lunes a viernes de 10:00 a 12:00 hrs.",
+        '11': "🕒 Giuliani Coluccio Piñones atiende de lunes a viernes de 10:00 a 12:00 hrs."
+      };
+      if (entrada === '0') { estado = 'nosotros'; actualizarChat(submenuNosotros); mostrarBotones(['1','2','3','0']); return; }
+      actualizarChat(horariosAcademicos[entrada] || "❌ Opción inválida.");
+      break;
+
+    case 'profesionales':
+      if (entrada === '1') actualizarChat("🕒 Sebastián Gonzalez Aguilera atiende los lunes y miércoles de 9:00 a 13:00 hrs.");
+      else if (entrada === '2') actualizarChat("🕒 Vania Quezada Lara atiende los martes y jueves de 10:00 a 14:00 hrs.");
+      else if (entrada === '0') { estado = 'nosotros'; actualizarChat(submenuNosotros); mostrarBotones(['1','2','3','0']); }
+      break;
+
+    case 'secretarias':
+      if (entrada === '1') actualizarChat("🕒 Karen Ibarra Jara atiende de 9:00 a 13:00 hrs. 📧 karen.ibarra@uta.cl");
+      else if (entrada === '2') actualizarChat("🕒 Susana Viveros Flores atiende de 10:00 a 14:00 hrs. 📧 susana.viveros@uta.cl");
+      else if (entrada === '3') actualizarChat("🕒 Elida Huanca Pairo atiende de 11:00 a 15:00 hrs. 📧 elida.huanca@uta.cl");
+      else if (entrada === '0') { estado = 'nosotros'; actualizarChat(submenuNosotros); mostrarBotones(['1','2','3','0']); }
       break;
 
     case 'finalizado':
