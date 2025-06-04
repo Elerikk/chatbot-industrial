@@ -271,11 +271,12 @@ function procesarEntrada(entrada) {
       };
       if (entrada === '0') { estado = 'nosotros'; actualizarChat(submenuNosotros); mostrarBotones(['1','2','3','0']); return; }
       actualizarChat(horariosAcademicos[entrada] || "❌ Opción inválida.");
+      actualizarChat(submenu
       break;
 
     case 'profesionales':
-      if (entrada === '1') actualizarChat("🕒 Sebastián Gonzalez Aguilera atiende los lunes y miércoles de 9:00 a 13:00 hrs.");
-      else if (entrada === '2') actualizarChat("🕒 Vania Quezada Lara atiende los martes y jueves de 10:00 a 14:00 hrs.");
+      if (entrada === '1') actualizarChat("🕒 Sebastián Gonzalez Aguilera atiende los martes de 11:20 a 12:50 hrs.");
+      else if (entrada === '2') actualizarChat("🕒 Vania Quezada Lara atiende los martes de 11:20 a 12:50 hrs.");
       else if (entrada === '0') { estado = 'nosotros'; actualizarChat(submenuNosotros); mostrarBotones(['1','2','3','0']); }
       break;
 
