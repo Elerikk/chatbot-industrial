@@ -257,26 +257,25 @@ function procesarEntrada(entrada) {
 
     case 'academicos':
       const horariosAcademicos = {
-        '1': "🕒 Liliana Pedraja Rejas atiende de lunes a viernes de 10:00 a 12:00 hrs y su correo es lpedraja@academicos.uta.cl.",
-        '2': "🕒 Diego Villagra Gil atiende de lunes a viernes de 10:00 a 12:00 hrs y su correo es dvillagra@academicos.uta.cl.",
-        '3': "🕒 Gregorio Paz Segura atiende de lunes a viernes de 10:00 a 12:00 hrs y su correo es.",
-        '4': "🕒 Gonzalo Valdés González atiende de lunes a viernes de 10:00 a 12:00 hrs y su correo es gvaldes@academicos.uta.cl.",
-        '5': "🕒 David Catari Vargas atiende de lunes a viernes de 10:00 a 12:00 hrs y su correo es dcatari@academicos.uta.cl.",
-        '6': "🕒 Hernando Bustos Andreu atiende de lunes a viernes de 10:00 a 12:00 hrs y su correo es hbustos@academicos.uta.cl.",
-        '7': "🕒 Carmen Araneda Guirriman atiende miercoles de 11:20 a 12:50 hrs y su correo es caraneda@academicos.uta.cl.",
-        '8': "🕒 Italo Marchioni Choque atiende de lunes a viernes de 10:00 a 12:00 hrs y su correo es imarchio@academicos.uta.cl.",
-        '9': "🕒 Laura Peréz Fuentes atiende de lunes a viernes de 10:00 a 12:00 hrs y su correo es lperezf@academicos.uta.cl.",
-        '10': "🕒 Amir Karbassi Yazdi atiende de lunes a viernes de 15:30 a 16:15 hrs y su correo es akarbassiy@academicos.uta.cl.",
-        '11': "🕒 Giuliani Coluccio Piñones atiende de lunes a viernes de 10:00 a 12:00 hrs y su correo es gcolucciop@academicos.uta.cl."
+        '1': "🕒 Liliana Pedraja Rejas atiende de lunes a viernes de 10:00 a 12:00 hrs.",
+        '2': "🕒 Diego Villagra Gil atiende de lunes a viernes de 10:00 a 12:00 hrs.",
+        '3': "🕒 Gregorio Paz Segura atiende de lunes a viernes de 10:00 a 12:00 hrs.",
+        '4': "🕒 Gonzalo Valdés González atiende de lunes a viernes de 10:00 a 12:00 hrs.",
+        '5': "🕒 David Catari Vargas atiende de lunes a viernes de 10:00 a 12:00 hrs.",
+        '6': "🕒 Hernando Bustos Andreu atiende de lunes a viernes de 10:00 a 12:00 hrs.",
+        '7': "🕒 Carmen Araneda Guirriman atiende miercoles de 11:20 a 12:50 hrs.",
+        '8': "🕒 Italo Marchioni Choque atiende de lunes a viernes de 10:00 a 12:00 hrs.",
+        '9': "🕒 Laura Peréz Fuentes atiende de lunes a viernes de 10:00 a 12:00 hrs.",
+        '10': "🕒 Amir Karbassi Yazdi atiende de lunes a viernes de 15:30 a 16:15 hrs.",
+        '11': "🕒 Giuliani Coluccio Piñones atiende de lunes a viernes de 10:00 a 12:00 hrs."
       };
       if (entrada === '0') { estado = 'nosotros'; actualizarChat(submenuNosotros); mostrarBotones(['1','2','3','0']); return; }
       actualizarChat(horariosAcademicos[entrada] || "❌ Opción inválida.");
-      actualizarChat(submenu
       break;
 
     case 'profesionales':
-      if (entrada === '1') actualizarChat("🕒 Sebastián Gonzalez Aguilera atiende los martes de 11:20 a 12:50 hrs y su correo es sgonzaleza@gestion.uta.cl.");
-      else if (entrada === '2') actualizarChat("🕒 Vania Quezada Lara atiende los martes de 11:20 a 12:50 hrs y su correo es vquezadal@gestion.uta.cl.");
+      if (entrada === '1') actualizarChat("🕒 Sebastián Gonzalez Aguilera atiende los lunes y miércoles de 9:00 a 13:00 hrs.");
+      else if (entrada === '2') actualizarChat("🕒 Vania Quezada Lara atiende los martes y jueves de 10:00 a 14:00 hrs.");
       else if (entrada === '0') { estado = 'nosotros'; actualizarChat(submenuNosotros); mostrarBotones(['1','2','3','0']); }
       break;
 
