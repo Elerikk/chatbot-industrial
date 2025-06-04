@@ -137,6 +137,7 @@ function procesarEntrada(entrada) {
       if (entrada === '1') { estado = 'info_general'; actualizarChat(submenuInfoGeneral); mostrarBotones(botones['info_general']); }
       else if (entrada === '2') { estado = 'faq'; actualizarChat(submenuFAQ); mostrarBotones(botones['faq']); }
       else if (entrada === '3') { estado = 'otros'; actualizarChat(submenuOtros); mostrarBotones(botones['otros']); }
+      else if (entrada === '4') { estado = 'nosotros'; actualizarChat(submenuNosotros); mostrarBotones(botones['nosotros']); }
       else if (entrada === '0') { estado = 'finalizado'; actualizarChat("🚪 Gracias por usar el chatbot. ¡Hasta luego!"); mostrarBotones([]); }
       else actualizarChat("❌ Opción inválida.");
       break;
