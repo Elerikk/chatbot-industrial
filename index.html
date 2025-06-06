@@ -84,7 +84,7 @@ const submenuBecas = "🎓 Submenú - Becas:\n1. Beca de Ayuda Solidaria de Alim
 const submenuBiblioteca = "📚 Submenú - Biblioteca:\n1. Libros\n2. Box\n3. Impreteca\n4. Tablets\n5. Audiovisuales\n6. Inclusiva\n0. Volver";
 const submenuTraslado = "🔄Submenú - Traslado:\n1. De carrera\n2. De institución\n3. De Casa de estudio\n0. Volver";
 const submenuNosotros = "👥 Nosotros:\n1. Académicos\n2. Profesionales de Apoyo\n3. Secretarias\n0. Volver";
-const submenuAcademicos = "👨‍🏫 Académicos:\n1. Liliana Pedraja Rejas\n2. Diego Villagra Gil\n3. Gregorio Paz Segura\n4. Gonzalo Valdés González\n5. David Catari Vargas\n6. Hernando Bustos Andreu\n7. Carmen Araneda Guirriman\n8. Italo Marchioni Choque\n9. Laura Peréz Fuentes\n10. Amir Karbassi Yazdi\n11. Giuliani Coluccio Piñones\n0. Volver";
+const submenuAcademicos = "👨‍🏫 Académicos:\n1. Liliana Pedraja Rejas\n2. Diego Villagra Gil\n3. Gregorio Paz Segura\n4. Gonzalo Valdés González\n5. David Catari Vargas\n6. Hernando Bustos Andreu\n7. Carmen Araneda Guirriman\n8. Italo Marchioni Choque\n9. Laura Peréz Fuentes\n10. Amir Karbassi Yazdi\n11. Giuliani Coluccio Piñones\n12. Juan Vega Vargas\n0. Volver";
 const submenuProfesionales = "🧑‍💼 Profesionales de Apoyo:\n1. Sebastian Gonzalez Aguilera\n2. Vania Quezada Lara\n0. Volver";
 const submenuSecretarias = "📠 Secretarias:\n1. Karen Ibarra Jara\n2. Susana Viveros Flores\n3. Elida Huanca Pairo\n0. Volver";
 
@@ -99,7 +99,7 @@ const botones = {
   'biblioteca': ['1', '2', '3', '4', '5', '6', '0'],
   'traslado': ['1', '2', '3', '0'],
   'nosotros': ['1', '2', '3', '0'],
-  'academicos': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
+  'academicos': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
   'profesionales': ['1', '2', '0'],
   'secretarias': ['1', '2', '3', '0']  
 };
@@ -249,7 +249,7 @@ function procesarEntrada(entrada) {
       break;
       
     case 'nosotros':
-      if (entrada === '1') { estado = 'academicos'; actualizarChat(submenuAcademicos); mostrarBotones(['1','2','3','4','5','6','7','8','9','10','11','0']); }
+      if (entrada === '1') { estado = 'academicos'; actualizarChat(submenuAcademicos); mostrarBotones(['1','2','3','4','5','6','7','8','9','10','11', '12','0']); }
       else if (entrada === '2') { estado = 'profesionales'; actualizarChat(submenuProfesionales); mostrarBotones(['1','2','0']); }
       else if (entrada === '3') { estado = 'secretarias'; actualizarChat(submenuSecretarias); mostrarBotones(['1','2','3','0']); }
       else if (entrada === '0') { estado = 'menu'; actualizarChat(menuPrincipal); mostrarBotones(['1','2','3','4','0']); }
@@ -268,6 +268,7 @@ function procesarEntrada(entrada) {
         '9': "🕒 Laura Peréz Fuentes atiende de lunes a viernes de 10:00 a 12:00 hrs.",
         '10': "🕒 Amir Karbassi Yazdi atiende de lunes a viernes de 15:30 a 16:15 hrs.",
         '11': "🕒 Giuliani Coluccio Piñones atiende de lunes a viernes de 10:00 a 12:00 hrs."
+        '12': "   Juan Vega Vargas atiende de lunes a viernes de 12:00 a 13:00 hrs."
       };
       if (entrada === '0') { estado = 'nosotros'; actualizarChat(submenuNosotros); mostrarBotones(['1','2','3','0']); return; }
       actualizarChat(horariosAcademicos[entrada] || "❌ Opción inválida.");
