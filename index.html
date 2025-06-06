@@ -274,8 +274,8 @@ function procesarEntrada(entrada) {
       break;
 
     case 'profesionales':
-      if (entrada === '1') actualizarChat("🕒 Sebastián Gonzalez Aguilera atiende los Martes de 11:20 a 12:50 hrs.");
-      else if (entrada === '2') actualizarChat("🕒 Vania Quezada Lara atiende los Martes de 11:20 a 12:50 hrs.");
+      if (entrada === '1') actualizarChat("🕒 Sebastián Gonzalez Aguilera atiende los Martes de 11:20 a 12:50 hrs. 📧 sgonzaleza@gestion.uta.cl");
+      else if (entrada === '2') actualizarChat("🕒 Vania Quezada Lara atiende los Martes de 11:20 a 12:50 hrs. 📧 vquezadal@gestion.uta.cl ");
       else if (entrada === '0') { estado = 'nosotros'; actualizarChat(submenuNosotros); mostrarBotones(['1','2','3','0']); }
       break;
 
