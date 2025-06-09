@@ -257,18 +257,18 @@ function procesarEntrada(entrada) {
 
     case 'academicos':
       const horariosAcademicos = {
-        '1': "🕒 Liliana Pedraja Rejas atiende de lunes a viernes de 10:00 a 12:00 hrs.",
-        '2': "🕒 Diego Villagra Gil atiende de lunes a viernes de 10:00 a 12:00 hrs.",
-        '3': "🕒 Gregorio Paz Segura atiende de lunes a viernes de 10:00 a 12:00 hrs.",
-        '4': "🕒 Gonzalo Valdés González atiende de lunes a viernes de 10:00 a 12:00 hrs.",
+        '1': "🕒 Liliana Pedraja Rejas atiende los Martes de 09:40 a 11:10 hrs. lpedraja@academicos.uta.cl.",
+        '2': "🕒 Diego Villagra Gil atiende los Martes de 11:20 a 12:50 hrs. dvillagra@academicos.uta.cl.",
+        '3': "🕒 Gregorio Paz Segura atiende los Viernes de 11:20 a 12:50 hrs.",
+        '4': "🕒 Gonzalo Valdés González atiende los Martes de 11:20 a 12:50 hrs. gvaldes@academicos.uta.cl.",
         '5': "🕒 David Catari Vargas atiende de lunes a viernes de 10:00 a 12:00 hrs.",
-        '6': "🕒 Hernando Bustos Andreu atiende de lunes a viernes de 10:00 a 12:00 hrs.",
-        '7': "🕒 Carmen Araneda Guirriman atiende miercoles de 11:20 a 12:50 hrs.",
-        '8': "🕒 Italo Marchioni Choque atiende de lunes a viernes de 10:00 a 12:00 hrs.",
-        '9': "🕒 Laura Peréz Fuentes atiende de lunes a viernes de 10:00 a 12:00 hrs.",
-        '10': "🕒 Amir Karbassi Yazdi atiende de lunes a viernes de 15:30 a 16:15 hrs.",
+        '6': "🕒 Hernando Bustos Andreu atiende los Miercoles de 16:20 a 17:50 hrs. hbustos@academicos.uta.cl.",
+        '7': "🕒 Carmen Araneda Guirriman atiende los Miercoles de 11:20 a 12:50 hrs. caraneda@academicos.uta.cl.",
+        '8': "🕒 Italo Marchioni Choque atiende los Martes de 11:20 a 12:50 hrs. imarchio@academicos.uta.cl.",
+        '9': "🕒 Laura Peréz Fuentes atiende de lunes a viernes de 10:00 a 12:00 hrs. lperezf@academicos.uta.cl.",
+        '10': "🕒 Amir Karbassi Yazdi atiende los Viernes de 14:45 a 16:15 hrs. akarbassiy@academicos.uta.cl",
         '11': "🕒 Giuliani Coluccio Piñones atiende de lunes a viernes de 10:00 a 12:00 hrs.",
-        '12': "🕒 Juan Vega Vargas atiende de lunes a viernes de 10:00 a 12:00 hrs."
+        '12': "🕒 Juan Vega Vargas atiende los dias Lunes de 16:20 a 17:50 hrs. jvegav@academicos.uta.cl."
       };
       if (entrada === '0') { estado = 'nosotros'; actualizarChat(submenuNosotros); mostrarBotones(['1','2','3','0']); return; }
       actualizarChat(horariosAcademicos[entrada] || "❌ Opción inválida.");
