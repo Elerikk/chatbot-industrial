@@ -250,7 +250,7 @@ function procesarEntrada(entrada) {
       
     case 'nosotros':
       if (entrada === '1') { estado = 'academicos'; actualizarChat(submenuAcademicos); mostrarBotones(['1','2','3','4','5','6','7','8','9','10','11','12','0']); }
-      else if (entrada === '2') { estado = 'profesionales'; actualizarChat(submenuProfesionales); mostrarBotones(['1','2','0']); }
+      else if (entrada === '2') { estado = 'profesionales'; actualizarChat(submenuProfesionales); mostrarBotones(['1','2','3','0']); }
       else if (entrada === '3') { estado = 'secretarias'; actualizarChat(submenuSecretarias); mostrarBotones(['1','2','3','0']); }
       else if (entrada === '0') { estado = 'menu'; actualizarChat(menuPrincipal); mostrarBotones(['1','2','3','4','0']); }
       break;
