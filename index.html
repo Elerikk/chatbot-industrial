@@ -85,7 +85,7 @@ const submenuBiblioteca = "📚 Submenú - Biblioteca:\n1. Libros\n2. Box\n3. Im
 const submenuTraslado = "🔄Submenú - Traslado:\n1. De carrera\n2. De institución\n3. De Casa de estudio\n0. Volver";
 const submenuNosotros = "👥 Nosotros:\n1. Académicos\n2. Profesionales de Apoyo\n3. Secretarias\n0. Volver";
 const submenuAcademicos = "👨‍🏫 Académicos:\n1. Liliana Pedraja Rejas\n2. Diego Villagra Gil\n3. Gregorio Paz Segura\n4. Gonzalo Valdés González\n5. David Catari Vargas\n6. Hernando Bustos Andreu\n7. Carmen Araneda Guirriman\n8. Italo Marchioni Choque\n9. Laura Peréz Fuentes\n10. Amir Karbassi Yazdi\n11. Giuliani Coluccio Piñones\n12. Juan Vega Vargas\n0. Volver";
-const submenuProfesionales = "🧑‍💼 Profesionales de Apoyo:\n1. Sebastian Gonzalez Aguilera\n2. Vania Quezada Lara\n0. Volver";
+const submenuProfesionales = "🧑‍💼 Profesionales de Apoyo:\n1. Sebastian Gonzalez Aguilera\n2. Vania Quezada Lara\n3. Jorge Piñones Chavez\n0. Volver";
 const submenuSecretarias = "📠 Secretarias:\n1. Karen Ibarra Jara\n2. Susana Viveros Flores\n3. Elida Huanca Pairo\n0. Volver";
 
 const botones = {
@@ -100,7 +100,7 @@ const botones = {
   'traslado': ['1', '2', '3', '0'],
   'nosotros': ['1', '2', '3', '0'],
   'academicos': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-  'profesionales': ['1', '2', '0'],
+  'profesionales': ['1', '2', '3', '0'],
   'secretarias': ['1', '2', '3', '0']  
 };
 
@@ -277,6 +277,7 @@ function procesarEntrada(entrada) {
     case 'profesionales':
       if (entrada === '1') actualizarChat("🕒 Sebastián Gonzalez Aguilera atiende los Martes de 11:20 a 12:50 hrs. 📧 sgonzaleza@gestion.uta.cl");
       else if (entrada === '2') actualizarChat("🕒 Vania Quezada Lara atiende los Martes de 11:20 a 12:50 hrs. 📧 vquezadal@gestion.uta.cl ");
+      else if (entrada === '3') actualizarChat("🕒 Jorge Piñones Chavez atiende todos los dias de 09:00 a 17:30 hrs. 📧 jpinones@gestion.uta.cl");
       else if (entrada === '0') { estado = 'nosotros'; actualizarChat(submenuNosotros); mostrarBotones(['1','2','3','0']); }
       break;
 
