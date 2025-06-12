@@ -141,7 +141,7 @@ function procesarEntrada(entrada) {
       else if (entrada === '4') { estado = 'nosotros'; actualizarChat(submenuNosotros); mostrarBotones(botones['nosotros']); }
       else if (entrada === '5') { 
         estado = 'menu';
-        actualizarChat("📘 Puedes revisar la malla curricular ICI aquí: https://ici.uta.cl/wp-content/uploads/2024/05/Malla-ICI-2013-Final-Formal.pdf");
+        actualizarChat("📘 Puedes revisar la malla curricular ICI aquí: <a href='https://ici.uta.cl/wp-content/uploads/2024/05/Malla-ICI-2013-Final-Formal.pdf' target='_blank'>Ver Malla Curricular</a>");
         actualizarChat(menuPrincipal);
         mostrarBotones(botones['menu']);
       }
