@@ -59,6 +59,7 @@
 2. Preguntas Frecuentes (FAQ)  
 3. Otros  
 4. Nosotros
+5. Malla Curricular ICI
 0. Salir</div>
 
 <div class="buttons-container" id="buttonsContainer"></div>
@@ -74,7 +75,7 @@ let estado = 'menu';
 const urlBuses = "https://uta.cl/buses";
 const urlAdaptacion = "https://scanned.page/p/681e2c35aadee";
 
-const menuPrincipal = "¿En qué te puedo ayudar?\n1. Información general de la carrera\n2. Preguntas Frecuentes (FAQ)\n3. Otros\n4. Nosotros\n0. Salir";
+const menuPrincipal = "¿En qué te puedo ayudar?\n1. Información general de la carrera\n2. Preguntas Frecuentes (FAQ)\n3. Otros\n4. Nosotros\n5. Malla Curricular ICI\n0. Salir";
 const submenuInfoGeneral = "📌 Submenú - Información General:\n1. Perfil de egreso\n2. Objetivos de la carrera\n3. Áreas de formación\n0. Volver";
 const submenuFAQ = "❓ Submenú - Preguntas Frecuentes:\n1. Licencias Médicas\n2. Trabajo al egresar\n3. Traslado\n4. Postulaciones\n5. Asignaturas\n6. Becas\n7. Biblioteca\n0. Volver";
 const submenuOtros = "🔧 Submenú - Otros:\n1. Buses de acercamiento\n2. Denuncias y Acoso\n3. Servicio Médico Estudiantil\n4. Adaptación Regular Académica\n0. Volver";
@@ -89,7 +90,7 @@ const submenuProfesionales = "🧑‍💼 Profesionales de Apoyo:\n1. Sebastian 
 const submenuSecretarias = "📠 Secretarias:\n1. Karen Ibarra Jara\n2. Susana Viveros Flores\n3. Elida Huanca Pairo\n0. Volver";
 
 const botones = {
-  'menu': ['1', '2', '3', '4', '0'],
+  'menu': ['1', '2', '3', '4', '5', '0'],
   'info_general': ['1', '2', '3', '0'],
   'faq': ['1', '2', '3', '4', '5', '6', '7', '0'],
   'otros': ['1', '2', '3', '4', '0'],
@@ -138,6 +139,12 @@ function procesarEntrada(entrada) {
       else if (entrada === '2') { estado = 'faq'; actualizarChat(submenuFAQ); mostrarBotones(botones['faq']); }
       else if (entrada === '3') { estado = 'otros'; actualizarChat(submenuOtros); mostrarBotones(botones['otros']); }
       else if (entrada === '4') { estado = 'nosotros'; actualizarChat(submenuNosotros); mostrarBotones(botones['nosotros']); }
+      else if (entrada === '5') { 
+        estado = 'menu';
+        actualizarChat("📘 Puedes revisar la malla curricular ICI aquí: https://ici.uta.cl/wp-content/uploads/2024/05/Malla-ICI-2013-Final-Formal.pdf");
+        actualizarChat(menuPrincipal);
+        mostrarBotones(botones['menu']);
+      }
       else if (entrada === '0') { estado = 'finalizado'; actualizarChat("🚪 Gracias por usar el chatbot. ¡Hasta luego!"); mostrarBotones([]); }
       else actualizarChat("❌ Opción inválida.");
       break;
