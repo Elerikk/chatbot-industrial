@@ -155,7 +155,7 @@ function procesarEntrada(entrada) {
       break;
 
     case 'faq':
-      if (entrada === '1') actualizarChat("📄 Licencias en Secretaría de Carrera dentro de 3 días.");
+      if (entrada === '1') actualizarChat("📄 Las licencias medicas deben subirse mediante intranet, en la sección REGISTRO MATRICULA-JUSTIFICATIVO MEDICO, tienen un plazo dentro de 3 días de tener una respuesta.");
       else if (entrada === '2') actualizarChat("🏢 Puedes trabajar en sector público, privado, industria.");
       else if (entrada === '3') { estado = 'traslado'; actualizarChat(submenuTraslado); mostrarBotones(botones['traslado']); return; }
       else if (entrada === '4') { estado = 'postulaciones'; actualizarChat(submenuPostulaciones); mostrarBotones(botones['postulaciones']); return; }
