@@ -246,8 +246,8 @@ function procesarEntrada(entrada) {
 
     case 'otros':
       if (entrada === '1') { actualizarChat("🚌 Consulta los horarios y paradas de buses de acercamiento:"); mostrarQR(urlBuses); }
-      else if (entrada === '2') actualizarChat("🚨 Las denuncias se pueden realizar en la Dirección de Género, para mas información visitar la página https://www.uta.cl/index.php/deygen/.");
-      else if (entrada === '3') actualizarChat("🏥 Servicio médico estudiantil atiende los Lunes a Jueves desde 8:00 a 17:00 y los Viernes de 8:00 a 19:00. Para mas info de sus servicios visitar su página https://webdae.uta.cl/index.php/servicio-medico/.");
+      else if (entrada === '2') actualizarChat("🚨 Las denuncias se pueden realizar en la Dirección de Género, para mas información visitar la página <a href='https://www.uta.cl/index.php/deygen/' target='_blank'>uta.cl/deygen</a>.");
+      else if (entrada === '3') actualizarChat("🏥 Servicio médico estudiantil atiende los Lunes a Jueves desde 8:00 a 17:00 y los Viernes de 8:00 a 19:00. Para mas info de sus servicios visitar su página <a href='https://webdae.uta.cl/index.php/servicio-medico/' target='_blank'>webdae.uta.cl</a>.");
       else if (entrada === '4') { actualizarChat("📘 Adaptación académica se solicita con respaldo médico o psicológico:"); mostrarQR(urlAdaptacion); }
       else if (entrada === '0') { estado = 'menu'; actualizarChat(menuPrincipal); mostrarBotones(botones['menu']); return; }
       else actualizarChat("❌ Opción inválida.");
