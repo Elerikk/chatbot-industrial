@@ -279,7 +279,7 @@ function procesarEntrada(entrada) {
       };
       if (entrada === '0') { estado = 'nosotros'; actualizarChat(submenuNosotros); mostrarBotones(['1','2','3','0']); return; }
       actualizarChat(horariosAcademicos[entrada] || "❌ Opción inválida.");
-      actualizarChat(horariosAcademicos);
+      actualizarChat(submenuAcademicos);
       mostrarBotones(botones['academicos']);
       break;
 
